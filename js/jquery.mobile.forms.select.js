@@ -22,7 +22,8 @@ $.widget( "mobile.selectmenu", $.mobile.widget, {
 		hidePlaceholderMenuItems: true,
 		closeText: "Close",
 		nativeMenu: true,
-		initSelector: "select:not(:jqmData(role='slider'))"
+		initSelector: "select:not(:jqmData(role='slider'))",
+        forceDialog : false
 	},
 	_create: function() {
 
@@ -483,7 +484,7 @@ $.widget( "mobile.selectmenu", $.mobile.widget, {
 			self.list.find( ".ui-btn-active" ).focus();
 		}
 
-		if ( menuHeight > screenHeight - 80 || !$.support.scrollTop ) {
+		if ( self.options.forceDialog || (menuHeight > screenHeight - 80 || !$.support.scrollTop) ) {
 			// prevent the parent page from being removed from the DOM,
 			// otherwise the results of selecting a list item in the dialog
 			// fall into a black hole
