@@ -457,6 +457,13 @@ $.widget( "mobile.selectmenu", $.mobile.widget, {
 					}
 				});
 		}
+
+        if ( !self.options.nativeMenu &&
+					( forceRebuild || select[0].options.length != self.list.find( "li" ).length ) ) {
+
+            self.menuPage.find('input[data-type="search"]').val("");
+        }
+
 	},
 
 	open: function() {
